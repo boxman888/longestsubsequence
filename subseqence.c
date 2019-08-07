@@ -3,12 +3,6 @@
 
 #define MAX(a,b) ((a < b)? b : a)
 
-
-int traceback(int* table[], int i, int j)
-{
-    return MAX(table[i-1][j], table[i][j-1]);
-}
-
 int lcs(char* gen1, char* gen2)
 {
     register int i, j;
@@ -29,11 +23,6 @@ int lcs(char* gen1, char* gen2)
             else
                 table[i][j] = MAX(table[i-1][j], table[i][j-1]);
         }
-    }
-    for (i = 0; i < strlen(gen2); i++){
-        for (j = 0; j < strlen(gen1); j++)
-            printf("%d ", table[i][j]);
-        printf("\n");
     }
 
     return table[strlen(gen2)][strlen(gen1)];
